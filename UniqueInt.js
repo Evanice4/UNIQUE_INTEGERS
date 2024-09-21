@@ -8,7 +8,7 @@ class UniqueIntHandler {
 
     async processFile(inputFilePath, outputFilePath) {
         try {
-            // Load data from the input file 
+            // Load data from the input file
             const inputData = await fs.promises.readFile(inputFilePath, 'utf8');
             let uniqueIntegers = [];
 
@@ -37,7 +37,7 @@ class UniqueIntHandler {
             await fs.promises.writeFile(outputFilePath, outputData, 'utf8');
 
         } catch (err) {
-            console.error(Error processing file ${inputFilePath}:, err.message);
+            console.error(`Error processing file ${inputFilePath}:`, err.message);
         }
     }
 
@@ -76,7 +76,7 @@ async function main() {
 
         for (const inputFile of inputFiles) {
             const inputFilePath = path.join(inputDir, inputFile);
-            const outputFilePath = path.join(outputDir, ${inputFile}_results.txt);
+            const outputFilePath = path.join(outputDir, `${inputFile}_results.txt`);
 
             // Initialize a UniqueIntHandler and execute file processing
             const uniqueIntHandler = new UniqueIntHandler();
@@ -86,10 +86,10 @@ async function main() {
         console.error('Error reading directory or processing files:', err.message);
     }
 
-    // Record the end time for runtime calculation 
+    // Record the end time for runtime calculation
     const endTime = Date.now();
-    const elapsedTime = endTime - startTime;  // Measure processing time in milliseconds
-    console.log(Time taken: ${elapsedTime} ms);
+    const elapsedTime = endTime - startTime; // Measure processing time in milliseconds
+    console.log(`Time taken: ${elapsedTime} ms`);
 }
 
 // Execute the main function
